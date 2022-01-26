@@ -3,6 +3,7 @@ import 'package:to_rule_them_all/services/quote_service.dart';
 import 'package:to_rule_them_all/utils/url_manager.dart';
 import 'package:to_rule_them_all/utils/urls.dart';
 
+// ignore: non_constant_identifier_names
 late final String API_KEY;
 
 void setup(List<String> arguments) {
