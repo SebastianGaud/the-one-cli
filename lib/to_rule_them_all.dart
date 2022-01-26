@@ -8,16 +8,19 @@ late final String API_KEY;
 
 void setup(List<String> arguments) {
   final parser = ArgParser()
-    ..addOption('api-key', mandatory: true)
-    ..addOption('character', abbr: 'c', mandatory: false)
-    ..addOption('details',
-        abbr: 'd',
-        mandatory: false,
-        defaultsTo: 'false',
-        allowed: ['true', 'false']);
+    ..addOption('api-key', mandatory: true);
+
+    //TODO: Aggiungere opzioni per richiedere una citazione di un personaggio specifico
+    // ..addOption('character', abbr: 'c', mandatory: false)
+    // ..addOption('details',
+    //     abbr: 'd',
+    //     mandatory: false,
+    //     defaultsTo: 'false',
+    //     allowed: ['true', 'false']);
 
   final result = parser.parse(arguments);
 
+  // Dentro result c'è un dizionario a cui possiamo accedere per ottenre le informazioni della cli
   API_KEY = result['api-key'];
 
   theOneCli().then((value) => print(value));

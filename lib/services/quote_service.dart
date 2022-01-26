@@ -18,6 +18,8 @@ import 'package:to_rule_them_all/utils/urls.dart';
 
 */
 
+
+//FIXME: Computazionalmente errato, chiamiamo un API richiedendo una lista ma poi estrapoliamo un solo elemento
 class QuoteService {
   Future<String> getRandomQuoteAsync() async {
       var res = await get(UrlManager.getUrlFromSegment(UrlSegments.Quote), headers: {
