@@ -2,5 +2,7 @@
 .dart_tool/
 .packages
 
+.vscode
+
 # Conventional directory for build output.
 build/
