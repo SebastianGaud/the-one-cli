@@ -7,18 +7,18 @@ import 'package:http/http.dart' show get;
 /*
 
 {
-            "_id": "5cd99d4bde30eff6ebccfbbe",
-            "height": "",
-            "race": "Human",
-            "gender": "Female",
-            "birth": "",
-            "spouse": "Belemir",
-            "death": "",
-            "realm": "",
-            "hair": "",
-            "name": "Adanel",
-            "wikiUrl": "http://lotr.wikia.com//wiki/Adanel"
-        },
+  "_id": "5cd99d4bde30eff6ebccfbbe",
+  "height": "",
+  "race": "Human",
+  "gender": "Female",
+  "birth": "",
+  "spouse": "Belemir",
+  "death": "",
+  "realm": "",
+  "hair": "",
+  "name": "Adanel",
+  "wikiUrl": "http://lotr.wikia.com//wiki/Adanel"
+},
 
 
 */
@@ -33,7 +33,7 @@ class CharacterService with AuthHeaderMixin {
   Future<Map<String, dynamic>> searchCharacter(String name) async{
     Uri uri = UrlManager.characterUri;
     final queryParams = {
-      'match': '$name'
+      'name': '$name'
     };
     uri = Uri.https(uri.authority, uri.path, queryParams);
     final res =await get(uri, headers: getAuthHeader(apiKey));

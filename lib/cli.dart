@@ -4,8 +4,6 @@ import 'package:cli/character_service.dart';
 import 'package:cli/quote_service.dart';
 
 
-//TODO: Se alla funzione viene passato il parametro 'character'
-// mi piacerebbe che venissa scelta una citazione di quel personaggio
 //TODO: se alla funzione viene passato true al parametro details
 //vanno stampati a video i dettagli della citazione come "Film e Personaggio"
 Future<String> getQuote(
