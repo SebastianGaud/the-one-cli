@@ -26,4 +26,21 @@ class QuoteService with AuthHeaderMixin {
     final List<dynamic> quotes = map['docs'];
     return quotes[0]['dialog'];
   }
+
+  Future<String> characterQuote(
+      {required String charId, required int limit, required int offset}) async {
+    final queryParameters = {
+      'limit': '$limit',
+      'offset': '$offset',
+    };
+
+    var uri = UrlManager.characterQuoteUri(charId);
+    Response response = await get(
+        Uri.https(uri.authority, uri.path, queryParameters),
+        headers: getAuthHeader(apiKey));
+
+    final Map<String, dynamic> map = jsonDecode(response.body);
+    final List<dynamic> quotes = map['docs'];
+    return quotes[0]['dialog'];
+  }
 }
