@@ -12,7 +12,7 @@ class ConfigurationProvider {
   });
 
   Future<Configuration> getConfigurationAsync() async {
-    final file = File('./apiKey.json');
+    final file = File(path);
     final String json = await file.readAsString();
     final Map<String, dynamic> mapApiKey = jsonDecode(json);
     return Configuration(apiKey:mapApiKey['ApiKey']);
