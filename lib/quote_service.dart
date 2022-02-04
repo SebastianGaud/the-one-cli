@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'dart:math';
 
 import 'package:cli/mixins/header_mixin.dart';
 import 'package:cli/url_manager.dart';
