@@ -1,17 +1,10 @@
-import 'dart:convert';
+import 'dart:math';
 
-import 'package:http/http.dart';
+import 'package:cli/quote_service.dart';
 
-Future<String> getQuote() async {
-  
-  
-  Response response = await get(Uri.parse('https://the-one-api.dev/v2/quote'), 
-  headers: {
-    'Authorization': 'Bearer 5hc0oyCyPJfPDrCR5CX4'
-  });
+Future<String> getQuote({required String apiKey}) {
+  var qs = QuoteService(apiKey: apiKey);
 
-  final Map<String, dynamic> map = jsonDecode(response.body);
-  final List<dynamic> quotes = map['docs'];
-  return quotes[0]['dialog'];
-
+  var rnd = Random(DateTime.now().millisecondsSinceEpoch);
+  return qs.quote(quotePosition: rnd.nextInt(1000));
 }
