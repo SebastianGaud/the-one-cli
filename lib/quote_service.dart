@@ -12,12 +12,19 @@ class QuoteService with AuthHeaderMixin {
     required this.apiKey,
   });
 
-  Future<String> quote({required int quotePosition}) async {
-    Response response =
-        await get(UrlManager.quoteUri, headers: getAuthHeader(apiKey));
+  Future<String> quote({required int limit, required int offset}) async {
+    final queryParameters = {
+      'limit': '$limit',
+      'offset': '$offset',
+    };
+
+    var uri = UrlManager.quoteUri;
+    Response response = await get(
+        Uri.https(uri.authority, uri.path, queryParameters),
+        headers: getAuthHeader(apiKey));
 
     final Map<String, dynamic> map = jsonDecode(response.body);
     final List<dynamic> quotes = map['docs'];
-    return quotes[quotePosition]['dialog'];
+    return quotes[0]['dialog'];
   }
 }
