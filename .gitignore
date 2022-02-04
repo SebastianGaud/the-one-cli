@@ -7,3 +7,7 @@
 
 # Conventional directory for build output.
 build/
+
+
+#Files
+apiKey.txt
