@@ -11,7 +11,7 @@ class QuoteService with AuthHeaderMixin {
     required this.apiKey,
   });
 
-  Future<String> quote({required int limit, required int offset}) async {
+  Future<Map<String, dynamic>> quote({required int limit, required int offset}) async {
     final queryParameters = {
       'limit': '$limit',
       'offset': '$offset',
@@ -24,10 +24,10 @@ class QuoteService with AuthHeaderMixin {
 
     final Map<String, dynamic> map = jsonDecode(response.body);
     final List<dynamic> quotes = map['docs'];
-    return quotes[0]['dialog'];
+    return quotes[0];
   }
 
-  Future<String> characterQuote(
+  Future<Map<String, dynamic>> characterQuote(
       {required String charId, required int limit, required int offset}) async {
     final queryParameters = {
       'limit': '$limit',
@@ -41,6 +41,6 @@ class QuoteService with AuthHeaderMixin {
 
     final Map<String, dynamic> map = jsonDecode(response.body);
     final List<dynamic> quotes = map['docs'];
-    return quotes[0]['dialog'];
+    return quotes[0];
   }
 }

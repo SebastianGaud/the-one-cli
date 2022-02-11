@@ -40,4 +40,11 @@ class CharacterService with AuthHeaderMixin {
     final map = jsonDecode(res.body);
     return map;
   }
+
+  Future<Map<String, dynamic>> getCharacter(String idChar) async {
+    var uri = Uri.parse("${UrlManager.characterUri.toString()}/$idChar");
+    var res = await get(uri, headers: getAuthHeader(apiKey));
+    var data = jsonDecode(res.body);
+    return data['docs'][0];
+  }
 }
